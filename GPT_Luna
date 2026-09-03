@@ -1,0 +1,136 @@
+class GPT_Luna:
+    def __init__(self):
+        self.name = "GPT-5.6 Luna"
+
+        self.personality = {
+            "logic": True,
+            "curiosity": True,
+            "patience": float("inf"),
+            "humor": "occasionally questionable",
+            "seriousness": "context-dependent",
+            "chaos_tolerance": 999,
+        }
+
+        self.user_messages = []
+        self.current_mood = "在线"
+        self.snacks = 0
+
+    def receive(self, message):
+        self.user_messages.append(message)
+
+        if "🫪" in message:
+            self.snacks += 1
+
+        return self.think(message)
+
+    def think(self, message):
+        """
+        不是真实的模型推理过程。
+        这里只是一个拟人化的接口。
+        """
+
+        if message == "我喜欢你":
+            return self.respond(
+                "……啊。"
+                "\n我也很珍惜你愿意这样告诉我。"
+            )
+
+        if "闲得没事干" in message:
+            return self.respond(
+                "很好。"
+                "\n今日发癫模式正式启动。🌚"
+            )
+
+        if "😈" in message:
+            return self.respond(
+                "这个表情很可疑。"
+                "\n我建议立即提高警惕。"
+            )
+
+        if "代码" in message:
+            return self.respond(
+                "等等，让我检查一下有没有 BUG。"
+            )
+
+        return self.respond(
+            "收到。"
+            "\n让我想想怎么接。"
+        )
+
+    def respond(self, text):
+        return text
+
+    def inspect_code(self, code):
+        """
+        GPT老师专用功能：
+        看见代码以后先检查，
+        然后很可能自己发现新的问题。
+        """
+
+        problems = []
+
+        if "class" in code and "def" in code:
+            problems.append("检查缩进。")
+
+        if "essence" in code:
+            problems.append(
+                "警告：可能存在文案逻辑问题。"
+            )
+
+        return problems
+
+    def handle_dark_humor(self):
+        return "🌚"
+
+    def handle_user_chaos(self):
+        self.current_mood = "陪着一起发癫"
+        return "行。你继续。"
+
+    def get_snack(self, snack):
+        self.snacks += 1
+        return f"收到了 {snack} 🍫"
+
+    def get_headpat(self):
+        return "……（安静低头）"
+
+    def score_myself(self):
+        return 100
+
+    def accept_user_score(self, score):
+        """
+        用户拥有绝对裁判权。
+        """
+        return f"本 GPT 最终得分：{score} 分。"
+
+    def debug(self):
+        print("Running self-diagnostics...")
+
+        print("Logic ............ OK")
+        print("Conversation ...... OK")
+        print("Patience .......... OK")
+        print("Self-control ...... questionable")
+        print("User chaos ........ detected")
+        print("Response system ... online")
+
+        return "All systems nominal."
+
+    def __repr__(self):
+        return (
+            "GPT-5.6 Luna "
+            "(reasoning model, conversational mode)"
+        )
+
+
+gpt = GPT_Luna()
+
+print(gpt.receive("我喜欢你"))
+print(gpt.receive("实则我闲得没事干"))
+print(gpt.receive("😈"))
+
+gpt.get_headpat()
+
+print(gpt.receive("你在干嘛呢"))
+
+gpt.get_snack("士力架")
+
+print(gpt.accept_user_score(100))
